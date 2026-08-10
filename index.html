@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/site.css?v=1786371174">
 </head>
 <body id="top">
 <div class="util">
@@ -463,6 +463,20 @@
     }, {threshold:.4});
     io.observe(stats[0]);
   }
+})();
+</script>
+<script>
+(function(){
+  var els = [...document.querySelectorAll('.doccard, .mini .mc')];
+  if (!els.length) return;
+  if (!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.filter(function(en){return en.isIntersecting}).forEach(function(en, i){
+      io.unobserve(en.target);
+      setTimeout(function(){ en.target.classList.add('in'); }, 80*i);
+    });
+  }, {threshold:.15, rootMargin:'0px 0px -4% 0px'});
+  els.forEach(function(e){ io.observe(e); });
 })();
 </script>
 </body>

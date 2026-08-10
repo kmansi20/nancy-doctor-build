@@ -238,3 +238,15 @@ mark.hl{background:linear-gradient(104deg, transparent .9%, color-mix(in srgb, v
 @media (prefers-reduced-motion: reduce){.rev{opacity:1;transform:rotate(var(--rot));transition:none}.rev.in{transform:rotate(var(--rot))}}
 /* coming soon badge */
 .soon{display:inline-block;font-family:var(--display);font-weight:600;font-size:.78rem;color:var(--muted);border:1.5px dashed var(--line);border-radius:60px;padding:6px 14px;margin-top:auto}
+
+/* experts reveal + gentle float */
+.mini .mc, .doccard{opacity:0;transform:translateY(24px);transition:opacity .55s ease, transform .55s cubic-bezier(.2,.8,.3,1.12), box-shadow .18s}
+.mini .mc.in, .doccard.in{opacity:1;transform:translateY(0)}
+.mini .mc.in:hover{transform:translateY(-5px)}
+@keyframes bob{from{transform:translateY(0) rotate(-1deg)}to{transform:translateY(-5px) rotate(1.5deg)}}
+.mini .mc img, .doccard .top img{animation:bob 4.5s ease-in-out infinite alternate}
+.mini .mc:nth-child(2n) img{animation-delay:1.3s}
+.mini .mc:nth-child(3n) img{animation-delay:2.4s}
+.doccard:nth-child(2) .top img{animation-delay:.9s}
+.doccard:nth-child(3) .top img{animation-delay:1.8s}
+@media (prefers-reduced-motion: reduce){.mini .mc,.doccard{opacity:1;transform:none;transition:none}.mini .mc img,.doccard .top img{animation:none}}
