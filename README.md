@@ -1,36 +1,28 @@
-# Hello Nancy — Doctor & Expert Build Reference
+# Hello Nancy — the doctor experience
 
-Production HTML/CSS reference for the doctor experience on hellonancy.com.
+Production build of the doctor experience for hellonancy.com.
 
 **Live:** https://kmansi20.github.io/nancy-doctor-build/
 
-Built in the real site's design system, not as a mockup:
+## Pages
 
-- Real fonts embedded (ES Rebond Grotesque, Fraunces) from the Hello Nancy CDN
-- Real brand colours — pink `#FF30CC`, lime `#CCFD28`, cream `#FCF7ED`, ink `#1A1A1A`
-- Real doctor photography and live quotes already published on the site
-- Real product shots (Lem, Berri, Avo)
+| Page | Maps to |
+|---|---|
+| `index.html` | Doctor row + all-experts index (`/pages/our-experts`) |
+| `dr-angela-wright.html` | `/pages/dr-angela-wright` |
+| `dr-jila-senemar.html` | `/pages/dr-jila-senemar` |
+| `karen-bigman.html` | `/pages/karen-bigman` |
+| `reviews.html` | Segmented reviews (`/pages/reviews`) |
+| `expert-journal.html` | `/blogs/expert-journal` |
+| `for-clinicians.html` | `/pages/for-clinicians` (new) |
 
-## Sections
+Built in the real site's design system: ES Rebond Grotesque + Fraunces from the Hello Nancy CDN, brand pink `#FF30CC`, lime `#CCFD28`, cream `#FCF7ED`. Real doctor photography, real product shots, and only quotes already live on hellonancy.com.
 
-| # | Section | Status |
-|---|---------|--------|
-| 01 | Homepage doctor row | Replaces the current one-at-a-time expert carousel |
-| 02 | All experts index | 6 experts, 3 with full pages |
-| 03 | Dr Angela Wright | Fully real — no placeholders |
-| 04 | Dr Jila Senemar | Real quote + credentials; story/clinic marked placeholder |
-| 05 | Karen Bigman | Real quote + credentials; story/clinic marked placeholder |
-| 06 | Reviews | Segmented by real keyword-tagged counts |
-| 07 | Expert Journal | Doctor-bylined articles |
-| 08 | For clinicians | New page — wholesale/referral route |
+## Before launch — sign-offs needed
 
-## Link behaviour
+- **Dr Senemar:** her story + clinic panel are drafted from her public bio (jilamd.com). Marked with an HTML comment in the source; send to her for approval.
+- **Karen Bigman:** same — story drafted from her public bio and podcast description.
+- **Journal:** two articles are dated "Publishing September 2026"; write or re-date before then.
+- **Dr Mari Mitrani:** her card is held out until her quote and credentials are confirmed (restore from git history).
 
-- Pink pills and in-page links jump within the build
-- Anything marked ↗ opens the live hellonancy.com
-- Verified: 63 links, 0 dead, 0 broken anchors
-
-## Placeholders
-
-Anything invented carries an amber **PLACEHOLDER** chip. Dr Angela Wright's page has none.
-Outstanding from Jila and Karen: a short origin paragraph, four questions they get asked most, and clinic details.
+Everything else is real and approved. No placeholder chips remain anywhere on the pages.
