@@ -47,7 +47,7 @@
     <div class="stats">
       <div class="stat"><b>4.8</b><span>average rating</span></div>
       <div class="stat"><b>20,000+</b><span>verified reviews</span></div>
-      <div class="stat"><b>1M+</b><span>O&#8217;s reported</span></div>
+      <div class="stat"><b>1,000,000+</b><span>O&#8217;s reported</span></div>
     </div>
     <div class="filters">
       <span class="f on" data-f="all">All</span><span class="f" data-f="first">First time with a toy <i>74</i></span>
@@ -194,17 +194,46 @@
     <div class="fbot"><span>&#169; 2026 Care &amp; Bloom Limited</span><span>Expert quotes as published on hellonancy.com</span></div>
   </div>
 </footer>
+<div class="revmodal" id="revmodal" role="dialog" aria-modal="true">
+  <div class="box"><button class="close" aria-label="Close">&#10005;</button>
+    <div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p id="revmodal-text"></p><div class="who" id="revmodal-who"></div></div>
+</div>
 <script>
-document.querySelectorAll('.filters .f').forEach(function(p){
-  p.addEventListener('click', function(){
-    document.querySelectorAll('.filters .f').forEach(function(x){x.classList.remove('on')});
-    p.classList.add('on');
-    var f = p.dataset.f;
+(function(){
+  var MAX = 9;
+  function apply(f){
+    var shown = 0, total = 0;
     document.querySelectorAll('.revs .rev').forEach(function(c){
-      c.style.display = (f==='all' || (c.dataset.tags||'').split(' ').indexOf(f)>=0) ? '' : 'none';
+      var match = (f==='all') || (c.dataset.tags||'').split(' ').indexOf(f)>=0;
+      if (match) total++;
+      var show = match && shown < MAX;
+      if (show) shown++;
+      c.style.display = show ? '' : 'none';
+    });
+    var meta = document.querySelector('.revmeta');
+    if (meta) meta.textContent = total > shown ? ('Showing ' + shown + ' of ' + total + ' here — the full wall has every single one') : '';
+  }
+  document.querySelectorAll('.filters .f').forEach(function(p){
+    p.addEventListener('click', function(){
+      document.querySelectorAll('.filters .f').forEach(function(x){x.classList.remove('on')});
+      p.classList.add('on');
+      apply(p.dataset.f);
     });
   });
-});
+  apply('all');
+  var modal = document.getElementById('revmodal');
+  document.querySelectorAll('.revs .rev').forEach(function(c){
+    c.addEventListener('click', function(){
+      document.getElementById('revmodal-text').textContent = c.querySelector('p').textContent;
+      var w = c.querySelector('.who'); var parts = [];
+      w.childNodes.forEach(function(n){ var t = (n.textContent||'').replace(/^[\s\u00b7\u00B7&#183;]+|[\s]+$/g,'').trim(); if (t && t !== '\u00b7') parts.push(t); });
+      document.getElementById('revmodal-who').textContent = parts.join(' \u00b7 ');
+      modal.classList.add('open');
+    });
+  });
+  modal.addEventListener('click', function(e){ if(e.target===modal || e.target.classList.contains('close')) modal.classList.remove('open'); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') modal.classList.remove('open'); });
+})();
 </script>
 </body>
 </html>

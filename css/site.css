@@ -118,7 +118,7 @@ h2.big em{font-style:normal;color:var(--pink)}
 .f:hover{border-color:var(--pink);color:var(--pink)}
 .f.on{background:var(--pink);border-color:var(--pink);color:#fff}
 .f i{font-style:normal;opacity:.6;margin-left:6px}
-.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:26px}
+.revs{columns:3 290px;column-gap:16px;margin-top:26px}
 @media(max-width:1000px){.revs{grid-template-columns:1fr}}
 .rev{background:var(--white);border-radius:22px;padding:26px;box-shadow:var(--shadow);text-align:left}
 .rev .st{color:var(--pink);letter-spacing:2px;font-size:.92rem}
@@ -164,3 +164,23 @@ footer .logo img{height:38px;margin-bottom:13px}
 .crumb{font-family:var(--display);font-size:.8rem;margin:0 0 18px}
 .crumb a{color:var(--muted);transition:.15s}
 .crumb a:hover{color:var(--pink)}
+
+/* wall of came */
+.rev{break-inside:avoid;margin:0 0 16px;cursor:pointer;transition:.18s;position:relative}
+.rev:nth-child(4n+1){transform:rotate(-1.1deg)}
+.rev:nth-child(4n+2){transform:rotate(.9deg)}
+.rev:nth-child(4n+3){transform:rotate(-.6deg);background:var(--softpink)}
+.rev:nth-child(4n){transform:rotate(1.2deg)}
+.rev:nth-child(5n){background:var(--pinktint)}
+.rev:nth-child(7n){background:#F7FBE1}
+.rev::before{content:"";position:absolute;top:-7px;left:50%;transform:translateX(-50%) rotate(-2deg);width:52px;height:14px;background:color-mix(in srgb, var(--lime) 75%, transparent);border-radius:2px}
+.rev:hover{transform:rotate(0) translateY(-4px);box-shadow:var(--shadow-md);z-index:2}
+.rev.short p{font-family:var(--display);font-weight:700;font-size:1.12rem;line-height:1.35;font-style:normal}
+.revmeta{font-family:var(--display);font-size:.8rem;color:var(--muted);text-align:center;margin-top:18px}
+.revmodal{position:fixed;inset:0;background:rgba(26,26,26,.55);display:none;align-items:center;justify-content:center;z-index:99;padding:20px}
+.revmodal.open{display:flex}
+.revmodal .box{background:var(--white);border-radius:22px;max-width:560px;width:100%;max-height:80vh;overflow:auto;padding:30px 30px 24px;box-shadow:var(--shadow-md);position:relative;transform:rotate(-.5deg)}
+.revmodal .box .st{color:var(--pink);letter-spacing:3px;font-size:1.1rem}
+.revmodal .box p{font-family:var(--body);font-size:1.12rem;line-height:1.65;margin:12px 0}
+.revmodal .box .who{font-family:var(--display);font-size:.8rem;color:var(--muted)}
+.revmodal .close{position:absolute;top:12px;right:16px;font-family:var(--display);font-size:1.3rem;cursor:pointer;background:none;border:none;color:var(--muted)}
