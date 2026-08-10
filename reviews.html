@@ -306,6 +306,26 @@
     });
     var meta = document.querySelector('.revmeta');
     if (meta) meta.textContent = total > shown ? ('Showing ' + shown + ' of ' + total + ' here. The full wall has every single one') : '';
+    reveal();
+  }
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+    var queue = entries.filter(function(en){return en.isIntersecting});
+    queue.forEach(function(en, i){
+      io.unobserve(en.target);
+      setTimeout(function(){ en.target.classList.add('in'); }, 70*i);
+    });
+  }, {threshold:.15, rootMargin:'0px 0px -5% 0px'}) : null;
+  function reveal(){
+    current.forEach(function(c){ c.classList.remove('in'); if (io) io.unobserve(c); });
+    void document.body.offsetWidth;
+    var stagger = 0;
+    current.forEach(function(c){
+      var r = c.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0){
+        setTimeout(function(){ c.classList.add('in'); }, 70*stagger++);
+      } else if (io){ io.observe(c); }
+      else { c.classList.add('in'); }
+    });
   }
   document.querySelectorAll('.filters .f').forEach(function(p){
     p.addEventListener('click', function(){

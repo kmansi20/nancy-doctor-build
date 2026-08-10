@@ -167,14 +167,14 @@ footer .logo img{height:38px;margin-bottom:13px}
 
 /* wall of came */
 .rev{break-inside:avoid;margin:0 0 16px;cursor:pointer;transition:.18s;position:relative}
-.rev:nth-child(4n+1){transform:rotate(-1.1deg)}
-.rev:nth-child(4n+2){transform:rotate(.9deg)}
-.rev:nth-child(4n+3){transform:rotate(-.6deg);background:var(--softpink)}
-.rev:nth-child(4n){transform:rotate(1.2deg)}
+.rev:nth-child(4n+1){--rot:-1.1deg}
+.rev:nth-child(4n+2){--rot:.9deg}
+.rev:nth-child(4n+3){--rot:-.6deg;background:var(--softpink)}
+.rev:nth-child(4n){--rot:1.2deg}
 .rev:nth-child(5n){background:var(--pinktint)}
 .rev:nth-child(7n){background:#F7FBE1}
 .rev::before{content:"";position:absolute;top:-7px;left:50%;transform:translateX(-50%) rotate(-2deg);width:52px;height:14px;background:color-mix(in srgb, var(--lime) 75%, transparent);border-radius:2px}
-.rev:hover{transform:rotate(0) translateY(-4px);box-shadow:var(--shadow-md);z-index:2}
+.rev.in:hover{transform:translateY(-4px) rotate(0) scale(1);box-shadow:var(--shadow-md);z-index:2}
 .rev.short p{font-family:var(--display);font-weight:700;font-size:1.12rem;line-height:1.35;font-style:normal}
 .revmeta{font-family:var(--display);font-size:.8rem;color:var(--muted);text-align:center;margin-top:18px}
 .revmodal{position:fixed;inset:0;background:rgba(26,26,26,.55);display:none;align-items:center;justify-content:center;z-index:99;padding:20px}
@@ -231,3 +231,10 @@ mark.hl{background:linear-gradient(104deg, transparent .9%, color-mix(in srgb, v
 .revmodal .mprev:hover,.revmodal .mnext:hover{background:var(--pink);color:#fff;border-color:var(--pink)}
 @media(max-width:700px){.revmodal .mprev{left:6px}.revmodal .mnext{right:6px}}
 @media (prefers-reduced-motion: reduce){.rev,.rev .stick,.surprise{transition:none}}
+
+/* scroll reveal */
+.rev{--rot:0deg;opacity:0;transform:translateY(26px) rotate(var(--rot)) scale(.97);transition:opacity .5s ease,transform .5s cubic-bezier(.2,.8,.3,1.15),box-shadow .18s}
+.rev.in{opacity:1;transform:translateY(0) rotate(var(--rot)) scale(1)}
+@media (prefers-reduced-motion: reduce){.rev{opacity:1;transform:rotate(var(--rot));transition:none}.rev.in{transform:rotate(var(--rot))}}
+/* coming soon badge */
+.soon{display:inline-block;font-family:var(--display);font-weight:600;font-size:.78rem;color:var(--muted);border:1.5px dashed var(--line);border-radius:60px;padding:6px 14px;margin-top:auto}

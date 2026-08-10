@@ -86,9 +86,9 @@
       <a class="mc" href="karen-bigman.html"><img src="img/95547d13.jpg" alt="Karen Bigman">
       <div class="nm">Karen Bigman</div><div class="lay">Sex &amp; menopause coach</div><div class="cr">Certified Sex Educator &#183; Certified Menopause Coach</div><p>Creator of Taboo to Truth: Life &amp; Sex After 50.</p><span class="lnk">Read her page &#8594;</span></a>
       <div class="mc"><img src="img/a3517a32.jpg" alt="Dr Tessa">
-      <div class="nm">Dr Tessa</div><div class="lay">Therapist specialising in sexuality</div><div class="cr">LCSW &#183; PhD in Human Sexuality</div><p>&#8220;Nancy provides toys that look adorable on your nightstand while packing a powerful, direct clitoral punch.&#8221;</p><span class="lnk" style="color:var(--muted)">Full page coming soon</span></div>
+      <div class="nm">Dr Tessa</div><div class="lay">Therapist specialising in sexuality</div><div class="cr">LCSW &#183; PhD in Human Sexuality</div><p>&#8220;Nancy provides toys that look adorable on your nightstand while packing a powerful, direct clitoral punch.&#8221;</p><span class="soon">&#128221; Full page dropping soon</span></div>
       <div class="mc"><img src="img/b8ec4965.jpg" alt="Hayley Hoffman">
-      <div class="nm">Hayley Hoffman</div><div class="lay">Couples therapist</div><div class="cr">Certified Imago Relationship Therapist</div><p>&#8220;Nancy is a brilliant approach to making sexy easy and accessible. Products are highly curated for shared play.&#8221;</p><span class="lnk" style="color:var(--muted)">Full page coming soon</span></div>
+      <div class="nm">Hayley Hoffman</div><div class="lay">Couples therapist</div><div class="cr">Certified Imago Relationship Therapist</div><p>&#8220;Nancy is a brilliant approach to making sexy easy and accessible. Products are highly curated for shared play.&#8221;</p><span class="soon">&#128221; Full page dropping soon</span></div>
       <a class="mc" href="dr-mari-mitrani.html"><img src="img/58709042.jpg" alt="Dr Mari Mitrani">
       <div class="nm">Dr Mari Mitrani</div><div class="lay">Doctor &amp; research scientist</div><div class="cr">MD, PhD</div><p>&#8220;Nothing speaks louder to women's health than a company that understands women need to feel comfortable in their own skin.&#8221;</p><span class="lnk">Read her page &#8594;</span></a>
     
@@ -368,6 +368,26 @@
     });
     var meta = document.querySelector('.revmeta');
     if (meta) meta.textContent = total > shown ? ('Showing ' + shown + ' of ' + total + ' here. The full wall has every single one') : '';
+    reveal();
+  }
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+    var queue = entries.filter(function(en){return en.isIntersecting});
+    queue.forEach(function(en, i){
+      io.unobserve(en.target);
+      setTimeout(function(){ en.target.classList.add('in'); }, 70*i);
+    });
+  }, {threshold:.15, rootMargin:'0px 0px -5% 0px'}) : null;
+  function reveal(){
+    current.forEach(function(c){ c.classList.remove('in'); if (io) io.unobserve(c); });
+    void document.body.offsetWidth;
+    var stagger = 0;
+    current.forEach(function(c){
+      var r = c.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0){
+        setTimeout(function(){ c.classList.add('in'); }, 70*stagger++);
+      } else if (io){ io.observe(c); }
+      else { c.classList.add('in'); }
+    });
   }
   document.querySelectorAll('.filters .f').forEach(function(p){
     p.addEventListener('click', function(){
