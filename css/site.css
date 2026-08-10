@@ -197,3 +197,8 @@ footer .logo img{height:38px;margin-bottom:13px}
 .mini .mc:nth-child(3n) img{border:3px solid var(--blush)}
 .mini .mc:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
 .hxrev .who .sig{font-family:'Caveat',cursive}
+
+/* layman-first credentials */
+.lay{display:inline-block;background:var(--lime);color:var(--ink);font-family:var(--display);font-weight:700;font-size:.76rem;border-radius:8px;padding:4px 10px;margin:5px 0 6px}
+.mc .cr, .doccard .cr{color:var(--muted)}
+.dochero .role{display:inline-block;background:var(--lime);color:var(--ink);font-family:var(--display);font-weight:700;font-size:.95rem;border-radius:10px;padding:6px 14px}
