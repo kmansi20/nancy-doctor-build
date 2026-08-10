@@ -104,22 +104,38 @@
       <div class="stat"><b>1M+</b><span>O&#8217;s reported</span></div>
     </div>
     <div class="filters">
-      <span class="f on">All</span><span class="f">First time with a toy <i>74</i></span>
-      <span class="f">After menopause <i>13</i></span><span class="f">After cancer <i>1</i></span>
-      <span class="f">Couples <i>134</i></span><span class="f">Sensitivity <i>53</i></span>
-      <span class="f">Quiet &amp; discreet <i>67</i></span><span class="f">Design <i>208</i></span>
+      <span class="f on" data-f="all">All</span><span class="f" data-f="first">First time with a toy <i>74</i></span>
+      <span class="f" data-f="meno">After menopause <i>13</i></span>
+      <span class="f" data-f="couples">Couples <i>134</i></span><span class="f" data-f="sens">Sensitivity <i>53</i></span>
+      <span class="f" data-f="quiet">Quiet &amp; discreet <i>67</i></span><span class="f" data-f="design">Design <i>208</i></span>
     </div>
     <div class="revs">
-      <div class="rev"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="rev" data-tags="meno sens"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <p>&#8220;I thought sensation and pleasure was a thing of the past. Let's just say it lived up to the reviews. I thought I was broken, but it turns out I needed something different than before. My husband is in awe!&#8221;</p>
         <div class="who"><span class="tag">After menopause</span><span class="verified">&#10003; Verified</span> &#183; Gill</div></div>
-      <div class="rev"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="rev" data-tags="first"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <p>&#8220;Genuinely didn't know what to expect as a complete beginner. It's not intimidating, it doesn't look like anything, and it just sits on the shelf like an ornament.&#8221;</p>
         <div class="who"><span class="tag">First timer</span><span class="verified">&#10003; Verified</span> &#183; Priya</div></div>
-      <div class="rev"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="rev" data-tags="quiet"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <p>&#8220;Quiet enough that I don't think about the walls. That was the whole reason I bought it and it delivered on exactly that.&#8221;</p>
         <div class="who"><span class="tag">Quiet &amp; discreet</span><span class="verified">&#10003; Verified</span> &#183; Anon</div></div>
+      <div class="rev" data-tags="first"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&#8220;Just got my Lem and thought I'd give it a try. I have never had such an intense orgasm in my life. It was the best feeling, longest, and most powerful orgasm I've ever had. I was astounded that this lil lemon could do so much.&#8221;</p>
+        <div class="who"><span class="tag">First timer</span><span class="verified">&#10003; Verified</span></div></div>
+      <div class="rev" data-tags="couples"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&#8220;Lem has changed my sex life for the better. Solo and with my husband, who loves me using it as much as I do! The Lem is a priority tool every woman should have.&#8221;</p>
+        <div class="who"><span class="tag">Couples</span><span class="verified">&#10003; Verified</span></div></div>
+      <div class="rev" data-tags="meno"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&#8220;I'm months shy of 70, and I decided that not having orgasms was an unacceptable side effect. The Lem is comfortable in my arthritic hand, and for me, an orgasm a couple of times a week is better than any pill at keeping the blues away.&#8221;</p>
+        <div class="who"><span class="tag">After menopause</span><span class="verified">&#10003; Verified</span></div></div>
+      <div class="rev" data-tags="sens meno"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&#8220;Woman in her late 50s here. I bought my Lem with some skepticism. My sex drive had all but curled up and died and my magic wand wasn't getting me where I wanted to go. Well, it's been a few years since I've had that strong of a climax, that quickly. I'm a convert.&#8221;</p>
+        <div class="who"><span class="tag">Sensitivity</span><span class="verified">&#10003; Verified</span></div></div>
+      <div class="rev" data-tags="design"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&#8220;This is the most AMAZING product!! I cannot believe how powerful this little lemon is! She's tiny, but packs a punch! Toe-curling, knees buckling, head rushing pleasure!!&#8221;</p>
+        <div class="who"><span class="tag">Design</span><span class="verified">&#10003; Verified</span></div></div>
     </div>
+    
     <a class="btn" style="margin-top:34px" href="https://hellonancy.com/en-gb/pages/wall-of-came" target="_blank" rel="noopener">Read all the reviews &#8599;</a>
   </div>
 </section>
@@ -152,5 +168,17 @@
     <div class="fbot"><span>&#169; 2026 Care &amp; Bloom Limited</span><span>Expert quotes as published on hellonancy.com</span></div>
   </div>
 </footer>
+<script>
+document.querySelectorAll('.filters .f').forEach(function(p){
+  p.addEventListener('click', function(){
+    document.querySelectorAll('.filters .f').forEach(function(x){x.classList.remove('on')});
+    p.classList.add('on');
+    var f = p.dataset.f;
+    document.querySelectorAll('.revs .rev').forEach(function(c){
+      c.style.display = (f==='all' || (c.dataset.tags||'').split(' ').indexOf(f)>=0) ? '' : 'none';
+    });
+  });
+});
+</script>
 </body>
 </html>
