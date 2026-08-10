@@ -211,3 +211,11 @@ footer .logo img{height:38px;margin-bottom:13px}
 .panel .peye{display:block;font-family:var(--display);font-weight:700;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);margin-bottom:6px}
 .panel h3{font-family:var(--display);font-weight:700;font-size:1.25rem;line-height:1.25;margin:0 0 12px}
 .panel#work .peye{color:#7A8F1B}
+
+/* balanced two-panel layout */
+.panels{display:grid;grid-template-columns:1.55fr 1fr;gap:14px}
+@media(max-width:760px){.panels{grid-template-columns:1fr}}
+/* quote inside hero */
+.dochero .words{margin:20px 0 0;padding:16px 20px;border-radius:16px}
+.dochero .words .q{font-size:1rem;line-height:1.5;font-weight:600}
+.dochero .words .att{font-size:.72rem;margin-top:8px}
