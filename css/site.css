@@ -219,3 +219,15 @@ footer .logo img{height:38px;margin-bottom:13px}
 .dochero .words{margin:20px 0 0;padding:16px 20px;border-radius:16px}
 .dochero .words .q{font-size:1rem;line-height:1.5;font-weight:600}
 .dochero .words .att{font-size:.72rem;margin-top:8px}
+
+/* interactive wall */
+mark.hl{background:linear-gradient(104deg, transparent .9%, color-mix(in srgb, var(--lime) 65%, transparent) 2.4%, color-mix(in srgb, var(--lime) 55%, transparent) 97%, transparent);padding:0 3px;border-radius:4px;color:inherit;font-weight:600}
+.rev .stick{position:absolute;bottom:10px;right:12px;font-size:1.15rem;transform:rotate(8deg);transition:.2s}
+.rev:hover .stick{transform:rotate(-6deg) scale(1.25)}
+.surprise{font-family:var(--display);font-weight:700;font-size:.9rem;background:var(--lime);border:none;border-radius:60px;padding:12px 22px;cursor:pointer;transition:.15s;box-shadow:var(--shadow)}
+.surprise:hover{transform:translateY(-2px) rotate(-1deg);box-shadow:var(--shadow-md)}
+.revmodal .mprev,.revmodal .mnext{position:absolute;top:50%;transform:translateY(-50%);background:var(--white);border:1px solid var(--line);border-radius:50%;width:42px;height:42px;font-size:1.1rem;cursor:pointer;box-shadow:var(--shadow);transition:.15s}
+.revmodal .mprev{left:-18px}.revmodal .mnext{right:-18px}
+.revmodal .mprev:hover,.revmodal .mnext:hover{background:var(--pink);color:#fff;border-color:var(--pink)}
+@media(max-width:700px){.revmodal .mprev{left:6px}.revmodal .mnext{right:6px}}
+@media (prefers-reduced-motion: reduce){.rev,.rev .stick,.surprise{transition:none}}
