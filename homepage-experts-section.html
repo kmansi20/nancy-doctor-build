@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Homepage experts section — Hello Nancy mockup</title>
+<meta name="description" content="Proposed homepage experts section: all 13 named experts, plain-English credentials, verified reviews. Replaces the one-at-a-time carousel.">
+<link rel="icon" type="image/png" href="img/dee08224.png">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  /* Section-scoped styles, hx- prefixed. Brand tokens come from css/site.css (:root). */
+  .hxpage{max-width:1360px;margin:0 auto;padding:20px 0 60px}
+  .hxnote{font-family:var(--display);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:center;padding:14px 20px}
+  .hxsec{background:var(--cream);padding:34px 0 44px}
+  .hxin{max-width:1200px;margin:0 auto;padding:0 18px}
+  .hxeyebrow{display:inline-block;font-family:var(--display);font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;background:var(--pink);color:#fff;border-radius:60px;padding:8px 18px}
+  .hxhead{text-align:center;margin-bottom:8px}
+  .hxhead h2{font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,5.5vw,2.7rem);line-height:1.12;letter-spacing:-.5px;margin:16px 0 10px}
+  .hxhead h2 em{font-style:normal;color:var(--pink)}
+  .hxhead p{font-family:var(--body);color:#4A4A4A;max-width:52ch;margin:0 auto;font-size:1rem}
+  .hxstats{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:20px 0 26px}
+  .hxstat{background:var(--white);border-radius:60px;box-shadow:var(--shadow);font-family:var(--display);font-size:.8rem;padding:10px 16px}
+  .hxstat b{color:var(--pink)}
+  .hxstat .st{color:var(--pink);letter-spacing:.05em}
+
+  /* Featured advisory partners */
+  .hxfeat{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:18px}
+  @media(min-width:820px){.hxfeat{grid-template-columns:1fr 1fr}}
+  .hxfcard{background:var(--white);border-radius:26px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  .hxftop{display:flex;gap:16px;padding:18px 18px 0;align-items:center}
+  .hxftop img{width:92px;height:92px;border-radius:50%;object-fit:cover;object-position:top;flex:none;border:3px solid var(--lime)}
+  .hxfid .hxadv{display:inline-block;font-family:var(--display);font-weight:700;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;background:var(--lime);border-radius:60px;padding:3px 10px;margin-bottom:6px}
+  .hxfid h3{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:0}
+  .hxplain{font-family:var(--display);font-weight:600;font-size:.88rem;color:var(--pink);margin:2px 0 0}
+  .hxcreds{font-family:var(--display);font-size:.7rem;color:var(--muted);margin-top:3px}
+  .hxfbio{font-family:var(--body);font-size:.92rem;color:#4A4A4A;padding:12px 18px 0;line-height:1.55}
+  .hxq{font-family:var(--body);font-style:italic;font-size:.95rem;background:var(--pinktint);border-left:3px solid var(--pink);border-radius:0 12px 12px 0;margin:14px 18px 0;padding:12px 14px;line-height:1.5}
+  .hxflink{font-family:var(--display);font-weight:600;font-size:.85rem;color:var(--pink);padding:12px 18px 18px;margin-top:auto}
+  .hxflink a{color:var(--pink)}
+  .hxflink a:hover{text-decoration:underline}
+
+  /* The wall */
+  .hxwallhead{font-family:var(--display);font-weight:700;font-size:1.05rem;text-align:center;margin:26px 0 14px}
+  .hxwall{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;-webkit-overflow-scrolling:touch}
+  .hxwall::-webkit-scrollbar{height:6px}
+  .hxwall::-webkit-scrollbar-thumb{background:var(--blush);border-radius:6px}
+  @media(min-width:900px){.hxwall{display:grid;grid-template-columns:repeat(4,1fr);overflow:visible}}
+  .hxcard{background:var(--white);border-radius:20px;box-shadow:var(--shadow);flex:0 0 240px;scroll-snap-align:start;padding:16px;display:flex;flex-direction:column}
+  .hxcard img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--blush)}
+  .hxcard h4{font-family:var(--display);font-weight:700;font-size:1rem;margin:10px 0 0}
+  .hxcard .hxplain{font-size:.8rem}
+  .hxcard .hxbio{font-family:var(--body);font-size:.8rem;color:#6B6B6B;margin-top:6px;line-height:1.45}
+  .hxcard .hxquote{font-family:var(--body);font-style:italic;font-size:.82rem;color:#1A1A1A;margin-top:10px;line-height:1.45}
+  .hxcard .hxquote::before{content:"\201C";color:var(--pink);font-weight:700}
+  .hxcard .hxquote::after{content:"\201D";color:var(--pink);font-weight:700}
+
+  /* Review band */
+  .hxrev{background:var(--white);border-radius:22px;box-shadow:var(--shadow);margin-top:22px;padding:20px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+  @media(min-width:820px){.hxrev{flex-direction:row;align-items:center;gap:24px}}
+  .hxrev .hxrl{flex:none;font-family:var(--display)}
+  .hxrev .hxrl .big{font-weight:700;font-size:1.9rem}
+  .hxrev .hxrl .stars{color:var(--pink);letter-spacing:2px}
+  .hxrev .hxrl .n{font-size:.75rem;color:var(--muted)}
+  .hxrev blockquote{margin:0;font-family:var(--body);font-style:italic;font-size:.95rem;line-height:1.55}
+  .hxrev .who{font-family:var(--display);font-size:.75rem;color:var(--muted);margin-top:6px;font-style:normal}
+  .hxrev .who b{color:var(--ink)}
+
+  .hxctas{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
+  .hxbtn{font-family:var(--display);font-weight:700;font-size:.92rem;border-radius:60px;padding:15px 26px;display:inline-block;transition:.15s}
+  .hxbtn.p{background:var(--pink);color:#fff}
+  .hxbtn.p:hover{transform:translateY(-2px)}
+  .hxbtn.g{border:2px solid var(--ink);color:var(--ink)}
+  .hxbtn.g:hover{background:var(--ink);color:#fff}
+  .hxfoot{font-family:var(--display);font-size:.68rem;color:var(--muted);text-align:center;margin-top:18px}
+</style>
+</head>
+<body>
+
+<p class="hxnote">Homepage section mockup &#183; replaces the current one-at-a-time expert carousel &#183; all photos &amp; quotes already live on hellonancy.com</p>
+
+<section class="hxsec">
+  <div class="hxin">
+
+    <div class="hxhead">
+      <span class="hxeyebrow">&#10024; Expert approved &#10024;</span>
+      <h2>13 doctors, sexologists &amp; educators<br>put their <em>names</em> on Nancy</h2>
+      <p>Not a logo wall. Real names, real credentials, real quotes, and two clinicians on our advisory board who review what we claim before we claim it.</p>
+    </div>
+
+    <div class="hxstats">
+      <span class="hxstat"><b>13</b> experts on the record</span>
+      <span class="hxstat"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b>4.8</b> from 20,412 verified reviews</span>
+      <span class="hxstat"><b>1M+</b> orgasms reported</span>
+    </div>
+
+    <!-- Advisory partners: deeper cards, per Momo — plain-English credentials + small bio + full story link -->
+    <div class="hxfeat">
+      <div class="hxfcard">
+        <div class="hxftop">
+          <img src="https://hellonancy.com/cdn/shop/files/image_18_3d4fe875-c705-46c2-b389-1c0bcee81426.png?width=280" alt="Dr Angela Wright">
+          <div class="hxfid">
+            <span class="hxadv">Advisory board</span>
+            <h3>Dr Angela Wright</h3>
+            <p class="hxplain">Menopause &amp; sexual medicine doctor (UK)</p>
+            <p class="hxcreds">GP &#183; Clinical Sexologist &#183; BMS Registered Menopause Specialist</p>
+          </div>
+        </div>
+        <p class="hxfbio">Fifteen years as an NHS GP before specialising in sexual medicine. She now runs a menopause and sexual medicine practice in the UK, and reviews every clinical claim we make before it goes live.</p>
+        <div class="hxq">As a doctor who focuses on sexual health, I frequently recommend the Lem as a high quality, beginner friendly suction toy.</div>
+        <p class="hxflink"><a href="dr-angela-wright.html">Dr Wright's full story &#8594;</a></p>
+      </div>
+
+      <div class="hxfcard">
+        <div class="hxftop">
+          <img src="https://hellonancy.com/cdn/shop/files/WhatsApp_Image_2026-07-24_at_10.34.34.jpg?width=280" alt="Dr Jila Senemar">
+          <div class="hxfid">
+            <span class="hxadv">Advisory board</span>
+            <h3>Dr Jila Senemar</h3>
+            <p class="hxplain">Women's health doctor &#183; 20+ years</p>
+            <p class="hxcreds">MD &#183; Board-certified OB/GYN (FACOG) &#183; Certified menopause practitioner (MSCP)</p>
+          </div>
+        </div>
+        <p class="hxfbio">Two decades as an OB/GYN in Miami, formerly teaching at the University of Miami. She now runs JilaMD, her own menopause practice, and founded the Miami Menopause Collective.</p>
+        <div class="hxq">If intimacy has become uncomfortable or something you avoid, know this: it's one of the most common things I see in my practice.</div>
+        <p class="hxflink"><a href="dr-jila-senemar.html">Dr Senemar's full story &#8594;</a></p>
+      </div>
+    </div>
+
+    <p class="hxwallhead">And eleven more who said it in their own words</p>
+
+    <!-- Mobile: swipe wall with snap. Desktop: grid. All quotes verbatim from hellonancy.com -->
+    <div class="hxwall">
+      <div class="hxcard">
+        <img src="https://hellonancy.com/cdn/shop/files/image_2_dc8f8808-d593-4827-91b8-1edb9f143cd2.png?width=200" alt="Dr Tara">
+        <h4>Dr Tara</h4>
+        <p class="hxplain">Professor of sexual communication</p>
+        <p class="hxbio">Tenured professor at Cal State Fullerton, host of the Luvbites podcast, columnist for Women's Health.</p>
+        <p class="hxquote">Lem is one of my favorite pleasure tools out there. I'm all about high-quality products with good design.</p>
+      </div>
+      <div class="hxcard">
+        <img src="https://hellonancy.com/cdn/shop/files/dr_mari_mitrani-scientific_research-340x425.jpg?width=200" alt="Dr Mari Mitrani">
+        <h4>Dr Mari Mitrani</h4>
+        <p class="hxplain">Physician scientist</p>
+        <p class="hxbio">MD, PhD. Regenerative-medicine researcher, biotech co-founder, and women's health advocate.</p>
+        <p class="hxquote">Nothing speaks louder to women's health than a company that understands women need to feel comfortable in their own skin.</p>
+      </div>
+      <div class="hxcard">
+        <img src="https://hellonancy.com/cdn/shop/files/image_16_ec0537f3-be7d-43c7-9a2c-fbc91b829c81.png?width=200" alt="Dr Tessa">
+        <h4>Dr Tessa</h4>
+        <p class="hxplain">Therapist with a PhD in human sexuality</p>
+        <p class="hxbio">Licensed clinical social worker specialising in sexuality and intimacy.</p>
+        <p class="hxquote">Nancy provides toys that look adorable on your nightstand while packing a powerful, direct clitoral punch.</p>
+      </div>
+      <div class="hxcard">
+        <img src="https://hellonancy.com/cdn/shop/files/bezalel_danielle.jpg?width=200" alt="Danielle Bezalel">
+        <h4>Danielle Bezalel</h4>
+        <p class="hxplain">Public health sex educator</p>
+        <p class="hxbio">Master of Public Health (Columbia). Creator and host of the Sex Ed with DB podcast.</p>
+        <p class="hxquote">Lem helps take the pressure out of pleasure, which is often exactly what people need to actually enjoy it.</p>
+      </div>
+      <div class="hxcard">
+        <img src="https://hellonancy.com/cdn/shop/files/unnamed_59a617b9-7357-4d3d-8c99-49ffe330692f.jpg?width=200" alt="Luci Lampe">
+        <h4>Luci Lampe</h4>
+        <p class="hxplain">Trauma-informed intimacy coach</p>
+        <p class="hxbio">Four-time author and host of The Liberated Feminine.</p>
+        <p class="hxquote">From delivery to orgasm with the Lemon, it's clear Hello Nancy created something thoughtful, playful, and shame-free.</p>
+      </div>
+      <div class="hxcard">
+        <img src="https://hellonancy.com/cdn/shop/files/sara_tang_sex_educator_pleasure_coach_sarasense_c012d963-6f53-43f9-ba52-087c9fe7fced.jpg?width=200" alt="Sara Tang">
+        <h4>Sara Tang</h4>
+        <p class="hxplain">Certified sexologist &amp; pleasure coach</p>
+        <p class="hxbio">Founder of Sarasense, bringing better-in-bed education to audiences across Asia.</p>
+        <p class="hxquote">I feel truly aligned with Nancy's mission of breaking taboos and encouraging open conversations about pleasure.</p>
+      </div>
+      <div class="hxcard">
+        <img src="https://hellonancy.com/cdn/shop/files/Maaike_Steinebach.png?width=200" alt="Maaike Steinebach">
+        <h4>Maaike Steinebach</h4>
+        <p class="hxplain">Women's health &amp; femtech advocate</p>
+        <p class="hxbio">Founder of Femtech Future after 20+ years leading banks and Visa Hong Kong.</p>
+        <p class="hxquote">Pleasure isn't something you earn, it's something you deserve. Every woman should feel confident exploring.</p>
+      </div>
+      <div class="hxcard">
+        <img src="https://hellonancy.com/cdn/shop/files/image_17_cc3728d8-763d-4a62-8566-e2652eaa7f6c.png?width=200" alt="Hayley Hoffman">
+        <h4>Hayley Hoffman</h4>
+        <p class="hxplain">Certified relationship therapist</p>
+        <p class="hxbio">Imago therapist and advanced clinician, presenter of the Getting the Love You Want workshops.</p>
+        <p class="hxquote">Nancy is a brilliant approach to making sexy easy and accessible. Products are highly curated for shared play.</p>
+      </div>
+      <div class="hxcard">
+        <img src="https://hellonancy.com/cdn/shop/files/Screenshot_2026-02-16_085545.png?width=200" alt="Georgie Culley">
+        <h4>Georgie Culley</h4>
+        <p class="hxplain">The Sun's resident sexpert</p>
+        <p class="hxbio">Award-winning journalist covering sex and relationships for the UK's biggest paper.</p>
+        <p class="hxquote">Designed with beginners in mind, the discreet clitoral massager boasts 12 pulse patterns and intensities.</p>
+      </div>
+      <div class="hxcard">
+        <img src="https://hellonancy.com/cdn/shop/files/20241213_Karen_Bigman_0705.avif?width=200" alt="Karen Bigman">
+        <h4>Karen Bigman</h4>
+        <p class="hxplain">Certified sex educator &amp; menopause coach</p>
+        <p class="hxbio">Host of Taboo to Truth: Life &amp; Sex After 50.</p>
+        <p class="hxquote">I love Lem because it's not a jackhammer shaking up the whole bed, and it's so easy and lightweight.</p>
+      </div>
+      <div class="hxcard">
+        <img src="https://hellonancy.com/cdn/shop/files/Screenshot_2026-02-16_085905.png?width=200" alt="Annette Benedetti">
+        <h4>Annette Benedetti</h4>
+        <p class="hxplain">Sex &amp; intimacy coach</p>
+        <p class="hxbio">Host of the Talk Sex with Annette podcast.</p>
+        <p class="hxquote">Lem is small, quiet, and looks completely innocent&#8230; She understood the assignment.</p>
+      </div>
+    </div>
+
+    <!-- Reviews close the loop: experts recommend it, customers confirm it -->
+    <div class="hxrev">
+      <div class="hxrl">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="big">4.8</div>
+        <div class="n">20,412 verified reviews</div>
+      </div>
+      <div>
+        <blockquote>&#8220;I thought sensation and pleasure was a thing of the past. I thought I was broken, but it turns out I needed something different than before. My husband is in awe!&#8221;
+        <div class="who"><b>Gill</b> &#183; verified purchase &#183; after menopause</div></blockquote>
+      </div>
+    </div>
+
+    <div class="hxctas">
+      <a class="hxbtn p" href="https://hellonancy.com/en-gb/collections/nancy-all-products" target="_blank" rel="noopener">Shop what they recommend</a>
+      <a class="hxbtn g" href="index.html#experts">Meet all our experts</a>
+    </div>
+
+    <p class="hxfoot">All quotes as published on hellonancy.com. Bios condensed from each expert's public profile.</p>
+    <!-- TEAM NOTE: bios are drafted from public profiles (Cal State Fullerton, Columbia MPH, JilaMD, Femtech Future, Sarasense, etc.).
+         Before this ships on the live theme, send each expert their one-liner for sign-off, per Momo's instruction on the 10 Aug call.
+         Stage 2 (agreed): replace the featured cards' photos with muted autoplay video once doctors film — scripts already drafted in
+         "What Our Doctors Should Film" (Angela & Jila). No video placeholders in this version by design. -->
+
+  </div>
+</section>
+
+</body>
+</html>
