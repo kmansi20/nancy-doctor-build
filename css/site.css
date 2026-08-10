@@ -184,3 +184,16 @@ footer .logo img{height:38px;margin-bottom:13px}
 .revmodal .box p{font-family:var(--body);font-size:1.12rem;line-height:1.65;margin:12px 0}
 .revmodal .box .who{font-family:var(--display);font-size:.8rem;color:var(--muted)}
 .revmodal .close{position:absolute;top:12px;right:16px;font-family:var(--display);font-size:1.3rem;cursor:pointer;background:none;border:none;color:var(--muted)}
+
+/* reviewer signatures */
+.sig{font-family:'Caveat',cursive;font-size:1.2rem;color:var(--ink);font-weight:600}
+/* expert wall pastels */
+.mini .mc{transition:.18s;position:relative}
+.mini .mc:nth-child(4n+1){background:var(--softpink)}
+.mini .mc:nth-child(4n+2){background:#F7FBE1}
+.mini .mc:nth-child(4n+3){background:var(--pinktint)}
+.mini .mc:nth-child(3n+1) img{border:3px solid var(--pink)}
+.mini .mc:nth-child(3n+2) img{border:3px solid var(--lime)}
+.mini .mc:nth-child(3n) img{border:3px solid var(--blush)}
+.mini .mc:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+.hxrev .who .sig{font-family:'Caveat',cursive}
